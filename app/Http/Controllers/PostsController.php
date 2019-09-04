@@ -36,10 +36,17 @@ class PostsController extends Controller
 
    }
 
-   public function like($like){
-    $post = Post::findOrFail($data['user_id']);
-    $post->likes = 1;
-    $post->save()
+   public function like(Request $data){
+
+    $post_like = Post::findOrFail($data['idPost']);
+    $post_like->likes += 1;
+    $post_like->save();
+
+    $posts = Post::all();
+
+    return view('posts.list')->with('posts', $posts);;
+
+   }
    public function store(Request $data){
 
        request()->validate([
@@ -58,7 +65,7 @@ class PostsController extends Controller
 
            'filter' => request('filter'),
 
-           'likes' => "0"
+           'likes' => 0
 
        ])->save();
 

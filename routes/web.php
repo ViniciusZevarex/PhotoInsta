@@ -14,5 +14,6 @@ Route::get('/posts/create','PostsController@create')->name('CreatePosts');
 
 Route::post('/posts','PostsController@store');
 
+Route::get('/like','PostsController@like')->name('like');
 
 Route::resource('notifications', 'NotificationController');

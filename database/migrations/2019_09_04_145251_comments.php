@@ -8,7 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 
-class CreatePostsTable extends Migration
+class Comments extends Migration
 
 {
 
@@ -26,15 +26,15 @@ class CreatePostsTable extends Migration
 
    {
 
-       Schema::create('posts', function (Blueprint $table) {
+       Schema::create('Comments', function (Blueprint $table) {
 
-           $table->bigIncrements('id');
+           $table->bigIncrements('idComments');
 
-           $table->string('image_path')->nullable();
+           $table->integer('user_id');
 
-           $table->string('filter')->nullable();
+           $table->string('comentario')->nullable();
 
-           $table->text('description')->nullable();
+           $table->integer('likesComentario')->default(0);
 
            $table->timestamps();
 
@@ -57,7 +57,7 @@ class CreatePostsTable extends Migration
 
    {
 
-       Schema::dropIfExists('posts');
+       Schema::dropIfExists('Comments');
 
    }
 

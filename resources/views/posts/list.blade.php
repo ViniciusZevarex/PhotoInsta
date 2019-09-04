@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-
 @section('content')
-
 <div class="container">
 
    <div class="row justify-content-center">
@@ -16,8 +14,11 @@
                    <img class="card-img-top" src="{{$post->image_path}}" alt="Card image cap">
 
                    <div class="card-body">{{$post->description}}</div>
-
-                    <div class="btn btn-danger">Like</div>
+                    @if ($post->likes == 0)
+                        <a class="btn btn-danger" href="{{route('like', ['idPost' => $post->id])}}">Like</a>
+                    @else
+                        <span>{{$post->likes}} likes</span>
+                    @endif
                </div>   
 
            @endforeach
