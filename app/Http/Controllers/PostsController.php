@@ -36,8 +36,11 @@ class PostsController extends Controller
 
    }
 
-
-   public function store(){
+   public function like($like){
+    $post = Post::findOrFail($data['user_id']);
+    $post->likes = 1;
+    $post->save()
+   public function store(Request $data){
 
        request()->validate([
 
@@ -55,12 +58,12 @@ class PostsController extends Controller
 
            'filter' => request('filter'),
 
-           'likes' => 0
+           'likes' => "0"
 
        ])->save();
 
 
-       return redirect('home');
+       return redirect()->route('show_posts');
 
    }
 

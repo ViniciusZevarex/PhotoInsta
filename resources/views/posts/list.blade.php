@@ -17,6 +17,7 @@
 
                    <div class="card-body">{{$post->description}}</div>
 
+                    <div class="btn btn-danger">Like</div>
                </div>   
 
            @endforeach
