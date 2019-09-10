@@ -28,15 +28,14 @@ class Comments extends Migration
 
        Schema::create('Comments', function (Blueprint $table) {
 
-           $table->bigIncrements('idComments');
+            $table->bigIncrements('idComments');
+            $table->string('comentario')->nullable();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->bigInteger('idPost')->unsigned()->nullable();    
+            $table->foreign('idPost')->references('id')->on('posts');
 
-           $table->integer('user_id');
-
-           $table->string('comentario')->nullable();
-
-           $table->integer('likesComentario')->default(0);
-
-           $table->timestamps();
+            $table->timestamps();
 
        });
 

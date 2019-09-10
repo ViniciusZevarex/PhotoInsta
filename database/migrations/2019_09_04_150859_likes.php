@@ -17,18 +17,12 @@ class Likes extends Migration
 
    {
 
-       Schema::create('Likes', function (Blueprint $table) {
-
+       Schema::create('likes', function (Blueprint $table) {
            $table->bigIncrements('idLikes');
-
-           $table->integer('user_id');    
-
-           $table->bigIncrements('idPost');
-           
-           $table->integer('likes')->default(0);     
-
-           $table->timestamps();
-
+           $table->bigInteger('user_id')->unsigned();
+           $table->bigInteger('idPost')->unsigned();
+           $table->foreign('user_id')->references('id')->on('users');    
+           $table->foreign('idPost')->references('id')->on('posts');
        });
 
    }
@@ -48,7 +42,7 @@ class Likes extends Migration
 
    {
 
-       Schema::dropIfExists('Comments');
+       Schema::dropIfExists('likes');
 
    }
 
