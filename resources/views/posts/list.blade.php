@@ -19,8 +19,26 @@
 
                         <img class="card-img-top" src="{{$post->image_path}}" alt="Card image cap">
 
-                        <div class="card-body">{{$post->description}}</div>
-                            <a class="btn btn-danger" href="{{route('like', ['idPost' => $post->id])}}">Like</a>
+                        <div class="card-body row p-5">
+                            <h4 class="col-12">{{$post->description}}</h4>
+                            exibir um de cada vez, se já deu like ou se não deu
+                            <a class="btn btn-outline-danger col-1" href="{{route('like', ['idPost' => $post->id])}}">
+                                <i class="material-icons">thumb_up</i>
+                            </a>
+                            <a class="btn btn-danger col-1" href="{{route('unlike', ['idPost' => $post->id])}}">
+                                <i class="material-icons">thumb_down</i>
+                            </a>
+                        </div>
+                        <!-- comments -->
+                        <ul class="list-group comment-list">
+                          <li class="list-group-item">Caraca!!!! Foto tooop whagdhsagdhsa</li>
+                          <li class="list-group-item">
+                                <form class="form-inline col-12">
+                                    <input class="form-control col-10" type="search" placeholder="Comentar" aria-label="Pesquisar">
+                                    <button class="btn btn-outline-success my-2 col-2" type="submit">Comentar</button>
+                                </form>
+                          </li>
+                        </ul>
                     </div>
 
                 @endforeach
