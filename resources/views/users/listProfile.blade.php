@@ -10,20 +10,35 @@
                 </div>
                 <div class="col-md-8">
                     <h1 class="display-4">{{ $user->name }}</h1>
-                    <p class="lead">Ver seguidores</p>
                     <p class="lead">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_upload">
-                            Alterar Foto de Perfil<i class="medium material-icons">settings</i>
-                        </button>  
+                        @if($user->id == auth()->id())
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_seguidores">
+                                Ver seguidores
+                            </button>  
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_upload">
+                                Alterar Foto de Perfil<i class="medium material-icons">settings</i>
+                            </button>  
+                        @else
+                            @if(!$user->seguindo)
+                                <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-primary">seguir</a>
+                            @else
+                                <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-danger">Deixar de Seguir</a>
+                            @endif
+                        @endif
                     </p>
                 </div>
             @endforeach
+            @if(session()->has('success'))
+                <div class="alert alert-success col-12">
+                    {{ session()->get('success') }}
+                </div>
+            @elseif(session()->has('error'))
+                <div class="alert alert-danger col-12">
+                    {{ session()->get('error') }}
+                </div>
+            @endif
         </div>
     </div>
-
-
-
-   
 
     <!-- Modal -->
     <div class="modal fade" id="modal_upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,6 +67,33 @@
             </div>
         </div>
     </div>
+    @if($user->id == auth()->id())
+        <div class="modal fade" id="modal_seguidores" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                                <h1 class="card-title text-center col-10">Seus Seguidores</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @foreach ($seguidores_arr as $seguidores)
+                                @foreach ($seguidores as $seguidor)
+                                    <li class="list-group-item">
+                                        <img  class="user_list_avatar" src="{{url('storage/' . $seguidor->avatar_path)}}">
+                                        <span class="list-title">{{$seguidor->name}}</<span>
+
+                                        <a href="{{route('seguir_user',['idUser' => $seguidor->id])}}" class="btn btn-primary">seguir</a>
+                                        <a href="{{route('user_profile',['idUser' => $seguidor->id])}}" class="btn btn-dark">ver perfil</a>
+                                    </li>
+                                @endforeach
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+    @endif
    <div class="row">
         <div class="card col-md-12">
             <div class="card-body row">

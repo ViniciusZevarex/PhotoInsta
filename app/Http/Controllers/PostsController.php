@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Post;
 use App\User;
+use App\seguidores;
 
 class PostsController extends Controller
 
@@ -27,13 +28,6 @@ class PostsController extends Controller
 
        return view('posts.list')->with('posts', $posts);
 
-   }
-
-   public function showProfile(){
-       $posts       = Post::where('user_id',auth()->id())->get();
-       $user_data   = User::where('id',auth()->id())->get();
-
-       return view('posts.listProfile', compact('posts','user_data'));
    }
 
    public function create() {

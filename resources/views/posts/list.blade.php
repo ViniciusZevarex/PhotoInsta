@@ -6,6 +6,12 @@
    <div class="row justify-content-center">
 
        <div class="col-md-8">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3>Para adicionar um post clique <a href="{{route('CreatePosts')}}" class="btn btn-dark">Aqui</a></h3>
+                </div>
+            </div>
+
             @if(!$posts->isEmpty())
                 @foreach ($posts as $post)
 
