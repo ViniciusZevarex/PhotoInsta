@@ -1,13 +1,13 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
-class EventoModel extends Model
+class Likes extends Model
 {
-    
-    protected   $table          = 'Likes';
+
+    protected   $table          = 'likes';
     public      $timestamps     = false;
-    protected   $fillable       = array('idLikes','user_id','idPost','likes');
+    protected   $fillable       = array('idLikes','user_id','idPost');
     protected   $primaryKey = 'idLikes';
     protected   $guarded        = ['idLikes'];
-    
+
 }

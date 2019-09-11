@@ -9,32 +9,46 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Post;
 
+use App\Likes;
 
-class CommentsController extends Controller
+use App\User;
+
+class LikesController extends Controller
 
 {
 
-    public function CreateComment() {        
-        $comments = Comentarios::create([
+    public function like(Request $data) {
+        $likes = Likes::create([
 
             'user_id' => auth()->id(),
- 
+
+            'idPost'  => $data['idPost'],
+
             'description' => request('description'),
- 
+
             'filter' => request('filter'),
- 
-            'likes' => 0
- 
+
         ])->save();
+
+        return redirect()->route('show_posts');
     }
 
 
-    public function ShowComment(){
+    public function ShowLikes(){
 
     }
 
-    public function DeleteComments(){
-
+    public function unLikes(Request $data){
+        Likes::where('idPost', '=', $data['idPost'])->where('user_id', '=', auth()->id())->delete();
+        return redirect()->route('');
     }
 
 }
+
+// public function like(Request $data){
+    //     // $post_like = Post::findOrFail($data['idPost']);
+    //     // $post_like->likes += 1;
+    //     // $post_like->save();
+    //     // $posts = Post::all();
+    //     // return view('posts.list')->with('posts', $posts);
+    //    }
