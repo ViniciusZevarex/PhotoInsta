@@ -14,7 +14,7 @@
                         @if($user->id == auth()->id())
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_seguidores">
                                 Ver seguidores
-                            </button>  
+                            </button> <br><br>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_upload">
                                 Alterar Foto de Perfil<i class="medium material-icons">settings</i>
                             </button>  
@@ -22,7 +22,7 @@
                             @if(!$user->seguindo)
                                 <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-primary">seguir</a>
                             @else
-                                <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-danger">Deixar de Seguir</a>
+                                <a href="{{route('deixar_seguir_user',['idUser' => $user->id])}}" class="btn btn-danger">Deixar de Seguir</a>
                             @endif
                         @endif
                     </p>

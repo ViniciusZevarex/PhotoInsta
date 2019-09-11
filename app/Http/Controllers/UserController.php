@@ -82,4 +82,10 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Você já está seguindo este usuário');
         }
     }
+
+    public function deixarDeSeguir(Request $data){
+        $deletar = seguidores::where('idSeguido',$data['idUser'])->where('idSeguidor',auth()->id())->delete();
+
+        return redirect()->back();
+    }
 }

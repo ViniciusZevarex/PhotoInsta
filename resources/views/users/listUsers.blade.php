@@ -21,9 +21,9 @@
                                 <img  class="user_list_avatar" src="{{url('storage/' . $user->avatar_path)}}">
                                 <span class="list-title">{{$user->name}}</<span>
                                 @if(!$user->seguindo)
-                                    <a href="{{route('deixar_seguir_user',['idUser' => $user->id])}}" class="btn btn-primary">seguir</a>
+                                    <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-primary">seguir</a>
                                 @else
-                                    <a href="{{route('seguir_user',['idUser' => $user->id])}}" class="btn btn-danger">Deixar de Seguir</a>
+                                    <a href="{{route('deixar_seguir_user',['idUser' => $user->id])}}" class="btn btn-danger">Deixar de Seguir</a>
                                 @endif
                                 
                                 <a href="{{route('user_profile',['idUser' => $user->id])}}" class="btn btn-dark">ver perfil</a>

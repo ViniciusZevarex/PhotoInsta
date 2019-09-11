@@ -4,10 +4,6 @@
 
         <div class="{{ $clases }} bg-white border text-center mt-2 pr-5 pl-5 pt-2 pb-0">
 
-           
-
-            <h1>Larainsta</h1>
-
 
             <h3>Inscreva-se para ver fotos e vídeos de seus amigos</h3>
 

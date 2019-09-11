@@ -8,7 +8,7 @@
 
         <div class="col-lg-5 offset-lg-1 col-xl-4 offset-xl-2 welcome-left d-flex align-items-center justify-content-center ">              
 
-            <img class="d-none d-lg-block img-fluid" src="{{ asset('images/laragram-inicio.png') }}">
+            <img class="d-none d-lg-block img-fluid" src="{{asset('images/icons/logo.png')}}">
 
         </div>
 

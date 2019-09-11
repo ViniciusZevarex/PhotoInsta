@@ -20,6 +20,7 @@ Route::get('/posts/user/profile','UserController@showProfile')->name('user_profi
 
 //seguidores
 Route::get('/seguir/user/','UserController@seguir')->name('seguir_user');
+Route::get('/deixar-de-seguir/user/','UserController@deixarDeSeguir')->name('deixar_seguir_user');
 
 //like
 Route::get('/like','LikesController@like')->name('like');
