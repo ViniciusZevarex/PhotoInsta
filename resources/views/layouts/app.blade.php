@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -37,6 +38,7 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a href="{{route('user_profile')}}" class="dropdown-item">Meu Perfil</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                         Logout
                     </a>

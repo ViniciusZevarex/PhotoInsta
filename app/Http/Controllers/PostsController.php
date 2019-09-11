@@ -29,6 +29,10 @@ class PostsController extends Controller
 
    }
 
+   public function showProfile(){
+       $posts = Post::where('user_id',auth()->id())->get();
+       return view('posts.listProfile')->with('posts', $posts);
+   }
 
    public function create() {
 
@@ -56,17 +60,10 @@ class PostsController extends Controller
        ]);      
 
        $post = Post::create([
-
            'user_id' => auth()->id(),
-
            'image_path' => request()->file('image_path')->store('posts', 'public'),
-
            'description' => request('description'),
-
            'filter' => request('filter'),
-
-           'likes' => 0
-
        ])->save();
 
 
