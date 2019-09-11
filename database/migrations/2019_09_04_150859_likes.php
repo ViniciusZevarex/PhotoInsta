@@ -16,7 +16,6 @@ class Likes extends Migration
    public function up()
 
    {
-
        Schema::create('likes', function (Blueprint $table) {
            $table->bigIncrements('idLikes');
            $table->bigInteger('user_id')->unsigned();

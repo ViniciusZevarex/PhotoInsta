@@ -14,6 +14,8 @@ Route::get('/posts/create','PostsController@create')->name('CreatePosts');
 
 Route::post('/posts','PostsController@store')->name('store_posts');
 
+Route::post('/user/profile/edit','UserController@uploadProfile')->name('store_profile_img');
+
 Route::get('/like','PostsController@like')->name('like');
 
 Route::get('/posts/user/profile','PostsController@showProfile')->name('user_profile');
