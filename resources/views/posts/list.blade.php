@@ -8,26 +8,39 @@
        <div class="col-md-8">
             <div class="card mt-4">
                 <div class="card-body">
-                    <h3>Para adicionar um post clique <a href="{{route('CreatePosts')}}" class="btn btn-dark">Aqui</a></h3>
+                    <span class="col-12">
+                    <h3 class="">Para adicionar um post clique </h3> 
+                    <h3><a href="{{route('CreatePosts')}}" class="btn btn-dark">Aqui</a></h3>
+                    </span>
                 </div>
             </div>
-
+            
             @if(!$posts->isEmpty())
                 @foreach ($posts as $post)
-
                     <div class="card mt-4">
 
                         <img class="card-img-top" src="{{$post->image_path}}" alt="Card image cap">
 
-                        <div class="card-body row p-5">
-                            <h4 class="col-12">{{$post->description}}</h4>
-                            exibir um de cada vez, se já deu like ou se não deu
-                            <a class="btn btn-outline-danger col-1" href="{{route('like', ['idPost' => $post->id])}}">
-                                <i class="material-icons">thumb_up</i>
-                            </a>
-                            <a class="btn btn-danger col-1" href="{{route('unlike', ['idPost' => $post->id])}}">
-                                <i class="material-icons">thumb_down</i>
-                            </a>
+                        <div class="card-body row">
+                            
+                                <div class="row col-12 p-3">
+                                    <div class="col-12">                        
+                                        @if (!$post->userLike)
+                                            <a class="btn btn-outline-danger col-1" href="{{route('like', ['idPost' => $post->id])}}">
+                                                <i class="material-icons">thumb_up</i>
+                                            </a>
+                                        @else
+                                            <a class="btn btn-danger col-1" href="{{route('unlike', ['idPost' => $post->id])}}">
+                                                <i class="material-icons">thumb_down</i>
+                                            </a>
+                                        @endif
+                                    </div>
+                                   
+                                </div> 
+                                <div class="col-12"><h4>Curtido por {{$post->qtdLikes}} pessoas</h4></div>
+                                <h4 class="col-12">{{$post->description}}</h4>
+                                
+                            
                         </div>
                         <!-- comments -->
                         <ul class="list-group comment-list">
@@ -40,7 +53,6 @@
                           </li>
                         </ul>
                     </div>
-
                 @endforeach
             @else
                 <h2 class="text-center">Nenhum post a Mostrar!</h2>

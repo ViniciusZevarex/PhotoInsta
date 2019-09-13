@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\Likes;
 use App\User;
 use App\seguidores;
 
@@ -24,8 +25,18 @@ class PostsController extends Controller
 
    public function index(){
 
-       $posts = Post::all();
-
+       $posts = Post::orderByRaw('created_at DESC')->get();
+       foreach ($posts as $post) {
+        $post->qtdLikes = Likes::where('idPost', '=', $post->id)->count();
+        $user_like = Likes::where('idPost', '=', $post->id)->where('user_id', '=', auth()->id())->count();
+            if($user_like == 0){
+                $post->userLike = False;
+            }else{
+                $post->userLike = True;
+            }
+       }
+       //$likes = Likes::all();
+    
        return view('posts.list')->with('posts', $posts);
 
    }

@@ -26,4 +26,4 @@ Route::get('/deixar-de-seguir/user/','UserController@deixarDeSeguir')->name('dei
 Route::get('/like','LikesController@like')->name('like');
 Route::get('/unlike','LikesController@unlike')->name('unlike');
 
-Route::resource('notifications', 'NotificationController');
+Route::resource('notifications', 'NotificationController'); 

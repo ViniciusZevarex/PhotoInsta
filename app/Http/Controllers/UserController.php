@@ -33,6 +33,8 @@ class UserController extends Controller
                     $u->seguindo = False;
                 }
              }
+
+             return view('users.listProfile', compact('posts','user_data'));
              
          }else{
              $posts       = Post::where('user_id',auth()->id())->get();
@@ -45,10 +47,10 @@ class UserController extends Controller
                  $s = User::where('id',$seguidor->idSeguidor)->get();
                  $seguidores_arr[] = $s;
              }
+
+             return view('users.listProfile', compact('posts','user_data','seguidores_arr'));
  
          }
- 
-        return view('users.listProfile', compact('posts','user_data','seguidores_arr'));
     }
 
     public function listUsers(){
