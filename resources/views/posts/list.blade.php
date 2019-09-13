@@ -44,10 +44,12 @@
                         </div>
                         <!-- comments -->
                         <ul class="list-group comment-list">
-                          <li class="list-group-item">Caraca!!!! Foto tooop whagdhsagdhsa</li>
+                        @foreach ($comments as $comment)
+                          <li class="list-group-item">{{$comment->comentario}}</li>
+                        @endforeach
                           <li class="list-group-item">
-                                <form class="form-inline col-12">
-                                    <input class="form-control col-10" type="search" placeholder="Comentar" aria-label="Pesquisar">
+                                <form class="form-inline col-12" method="GET" action="{{route('CreateComment')}}">
+                                    <input class="form-control col-10" type="search" placeholder="Comentario" name="Comentario" aria-label="Pesquisar">
                                     <button class="btn btn-outline-success my-2 col-2" type="submit">Comentar</button>
                                 </form>
                           </li>

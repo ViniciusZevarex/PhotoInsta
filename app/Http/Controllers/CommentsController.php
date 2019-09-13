@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
-use App\Post;
+use App\Comments;
 
 
 class CommentsController extends Controller
@@ -15,34 +15,19 @@ class CommentsController extends Controller
 {
 
     public function CreateComment(Request $data) {        
-        $comments = Comentarios::create([
+        $comments = Comments::create([
 
             'user_id' => auth()->id(),
  
             'Comentario' => request('Comentario'),
  
-            'likesComentario' => 0 
- 
         ])->save();
-
-
+        return redirect()->route('show_posts');
     }
 
-    public function LikeComentario()
-    {
-        $comments_likes = Post::findOrFail('user_id', auth()->id());
-        $comments_likes->likes += 1;
-        $comments_likes->save();
-    }
-    public function ShowComment(){
-
-    }
-
-    public function DeleteComments(Request $request){
-        $idEvento = $request->query('deletar_evento');
-        Comentarios::destroy($request->idPost);
-        
-        return redirect()->route('listEvent');
+    public function DeleteComments(Request $data){
+        Comments::where('idComments', '=', $data['idComents'])->delete();
+        return redirect()->route('show_posts');
     }
 
 }

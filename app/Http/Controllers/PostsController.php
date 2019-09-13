@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Likes;
 use App\User;
+use App\Comments;
 use App\seguidores;
 
 class PostsController extends Controller
@@ -35,10 +36,8 @@ class PostsController extends Controller
                 $post->userLike = True;
             }
        }
-       //$likes = Likes::all();
     
        return view('posts.list')->with('posts', $posts);
-
    }
 
    public function create() {

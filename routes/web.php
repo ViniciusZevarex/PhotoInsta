@@ -27,3 +27,7 @@ Route::get('/like','LikesController@like')->name('like');
 Route::get('/unlike','LikesController@unlike')->name('unlike');
 
 Route::resource('notifications', 'NotificationController'); 
+
+//comentarios
+Route::get('/comments','CommentsController@CreateComment')->name('CreateComment');
+Route::get('/deleteComments','CommentsController@DeleteComment')->name('DeleteComment');

@@ -38,7 +38,6 @@ class LikesController extends Controller
     }
 
     public function unlike(Request $data){
-        //dd($data);
         Likes::where('idPost', '=', $data['idPost'])->where('user_id', '=', auth()->id())->delete();
         return redirect()->route('show_posts');
     }

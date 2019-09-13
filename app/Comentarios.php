@@ -6,7 +6,7 @@ class Comments extends Model
 
     protected   $table          = 'Comments';
     public      $timestamps     = false;
-    protected   $fillable       = array('idComments','user_id','Comentario','likesComentario');
+    protected   $fillable       = array('idComments','user_id','Comentario');
     protected   $primaryKey = 'idComments';
     protected   $guarded        = ['idComments'];
 
