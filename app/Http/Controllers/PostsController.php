@@ -27,13 +27,16 @@ class PostsController extends Controller
 
        $posts = Post::orderByRaw('created_at DESC')->get();
        foreach ($posts as $post) {
-        $post->qtdLikes = Likes::where('idPost', '=', $post->id)->count();
-        $user_like = Likes::where('idPost', '=', $post->id)->where('user_id', '=', auth()->id())->count();
-            if($user_like == 0){
-                $post->userLike = False;
-            }else{
-                $post->userLike = True;
-            }
+            $data_user          = User::where('id',$post->user->id)->get();
+            $post->data_user    = $data_user[0];
+            $post->qtdLikes     = Likes::where('idPost', '=', $post->id)->count();
+            $user_like          = Likes::where('idPost', '=', $post->id)->where('user_id', '=', auth()->id())->count();
+                
+                if($user_like == 0){
+                    $post->userLike = False;
+                }else{
+                    $post->userLike = True;
+                }
        }
        //$likes = Likes::all();
     

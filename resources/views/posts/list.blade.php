@@ -17,8 +17,15 @@
             
             @if(!$posts->isEmpty())
                 @foreach ($posts as $post)
-                    <div class="card mt-4">
-
+                    <div class="card mt-4 shadow">
+                        <div class="col-12 p-2">
+                            <div class="row">
+                                <img class="profile-user-post" src="{{ url('storage/' . $post->data_user->avatar_path)}}">
+                                <a class="col-10 link-none-decoration" href="{{route('user_profile',['idUser' => $post->data_user->id])}}">
+                                    <h5>{{$post->data_user->name}}</h5>
+                                </a>
+                            </div>
+                        </div>
                         <img class="card-img-top" src="{{$post->image_path}}" alt="Card image cap">
 
                         <div class="card-body row">
