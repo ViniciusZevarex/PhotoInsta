@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
 
@@ -51,11 +50,13 @@
                         </div>
                         <!-- comments -->
                         <ul class="list-group comment-list">
-                        @foreach ($comments as $comment)
-                          <li class="list-group-item">{{$comment->comentario}}</li>
+                        @foreach ($post->comments as $comment)
+                            <?php //$comment->user_comment->name ?>
+                            <li class="list-group-item">{{$comment->comentario}}</li>
                         @endforeach
                           <li class="list-group-item">
                                 <form class="form-inline col-12" method="GET" action="{{route('CreateComment')}}">
+                                    <input type="hidden" name="idPost" value="{{$post->id}}">
                                     <input class="form-control col-10" type="search" placeholder="Comentario" name="Comentario" aria-label="Pesquisar">
                                     <button class="btn btn-outline-success my-2 col-2" type="submit">Comentar</button>
                                 </form>

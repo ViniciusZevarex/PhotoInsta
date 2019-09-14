@@ -20,8 +20,11 @@ class CommentsController extends Controller
             'user_id' => auth()->id(),
  
             'Comentario' => request('Comentario'),
+
+            'idPost'    => request('idPost'),
  
         ])->save();
+
         return redirect()->route('show_posts');
     }
 

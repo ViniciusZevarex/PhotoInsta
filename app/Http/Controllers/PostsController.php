@@ -30,6 +30,13 @@ class PostsController extends Controller
        foreach ($posts as $post) {
             $data_user          = User::where('id',$post->user->id)->get();
             $post->data_user    = $data_user[0];
+
+            $comentarios = Comments::where('idPost',$post->id)->get();
+            //foreach ($comentarios as $comentario){
+            //    $comentario->user_comment = User::where('id','=',$comentario->user_id)->select("name")->get(); 
+            //}
+            $post->comments = $comentarios;
+
             $post->qtdLikes     = Likes::where('idPost', '=', $post->id)->count();
             $user_like          = Likes::where('idPost', '=', $post->id)->where('user_id', '=', auth()->id())->count();
                 
