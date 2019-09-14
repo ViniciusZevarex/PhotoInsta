@@ -44,6 +44,9 @@
                     <a class="nav-link" href="{{route('show_posts')}}" class="dropdown-item">Postagens</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route('CreatePosts')}}" class="dropdown-item">Adicione um novo post</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('list_users')}}" class="dropdown-item">Ver Perfis</a>
                 </li>
                 <li class="nav-item dropdown">
