@@ -4,9 +4,7 @@
 Auth::routes();
 
 
-Route::get('/', 'HomeController@index');
-
-Route::get('/home', 'HomeController@home');
+Route::get('/', 'PostsController@index');
 
 //posts
 Route::get('/posts','PostsController@index')->name('show_posts');
