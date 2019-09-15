@@ -28,4 +28,4 @@ Route::resource('notifications', 'NotificationController');
 
 //comentarios
 Route::get('/comments','CommentsController@CreateComment')->name('CreateComment');
-Route::get('/deleteComments','CommentsController@DeleteComment')->name('DeleteComment');
+Route::get('/deleteComments','CommentsController@DeleteComments')->name('DeleteComment');

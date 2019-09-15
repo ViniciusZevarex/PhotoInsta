@@ -29,7 +29,7 @@ class CommentsController extends Controller
     }
 
     public function DeleteComments(Request $data){
-        Comments::where('idComments', '=', $data['idComents'])->delete();
+        Comments::where('idComments', '=', $data['idComments'])->delete();
         return redirect()->route('show_posts');
     }
 

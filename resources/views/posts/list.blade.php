@@ -42,8 +42,12 @@
                         <!-- comments -->
                         <ul class="list-group comment-list">
                         @foreach ($post->comments as $comment)
-                            <?php //$comment->user_comment->name ?>
-                            <li class="list-group-item"><b>{{$comment->name}}: </b> {{$comment->comentario}}</li>
+                            <li class="list-group-item">
+                            <b>{{$comment->name}}: </b> 
+                            {{$comment->comentario}}  
+                            <a class="btn btn-outline-danger" href="{{route('DeleteComment', ['idComments' => $comment->idComments])}}">Excluir</a>                           
+                            </li>
+                            
                         @endforeach
                           <li class="list-group-item">
                                 <form class="form-inline col-12" method="GET" action="{{route('CreateComment')}}">
